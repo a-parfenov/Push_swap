@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:50:30 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/14 23:33:45 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/15 19:29:10 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int main(int argc, char const *argv[])
 
 	if (argc < 2)
 		exit(1);
+	// проверка входящих переменных
 	all = malloc(sizeof(t_all));
 	if (!all)
 		exit(1);
@@ -117,18 +118,32 @@ int main(int argc, char const *argv[])
 		num = ft_atoi(argv[i]);
 		add_back(&all->stack_a, lstnew(num)); // сделать проверку создан ли лист
 	}
+	init_sorting(all);
+
+	
+	// pb(all);
 	print_stacks(all);
-	pb(all);
-	print_stacks(all);
-	pb(all);
-	print_stacks(all);
-	pb(all);
-	print_stacks(all);
-	pa(all);
-	print_stacks(all);
-	pa(all);
-	print_stacks(all);
-	pa(all);
-	print_stacks(all);
+	// pb(all);
+	// print_stacks(all);
+	// pb(all);
+	// print_stacks(all);
+	// ra(all);
+	// print_stacks(all);
+	// rb(all);
+	// print_stacks(all);
+	// rra(all);
+	// print_stacks(all);
+	// rrb(all);
+	// print_stacks(all);
+	// sa(all);
+	// print_stacks(all);
+	// pa(all);
+	// print_stacks(all);
+	// pa(all);
+	// print_stacks(all);
+	// pa(all);
+	// print_stacks(all);
+	
+	ft_putendl_fd(all->command, 1);
 	return 0;
 }
