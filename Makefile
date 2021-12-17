@@ -2,7 +2,7 @@ NAME		=	push_swap
 
 SRCS_FILES	= 	push_swap.c		mini_sort.c\
 				swap.c			sorting.c\
-				push.c\
+				push.c			validation.c\
 				rotate.c\
 				reverse_rotate.c
 
@@ -39,7 +39,6 @@ libft:
 $(NAME):	$(OBJS) $(LIB)
 			@$(CC) $(INCLUDE) $(LIB) -o $(NAME) $(OBJS)
 			@echo ${GREEN} "\n< Compiled push_swap >\n" ${END}
-			@echo ${GREEN} "\n< Done >\n" ${END}
 
 clean:
 			@$(RM) $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:05 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/15 19:08:23 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/17 19:19:26 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,13 @@ void	sorting_3_num(t_all *all);
 void	sorting_4_num(t_all *all);
 void	sorting_5_num(t_all *all);
 void	init_sorting(t_all *all);
+void	bubbleSort(int *arr_num, int size);
 
 void	sorting(t_all *all);
 
 void print_stacks(t_all *all);
+
+void	ft_error(char *error);
+void	validation(int argc, char const *argv[]);
 
 #endif

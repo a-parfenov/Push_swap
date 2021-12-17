@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:50:30 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/15 19:29:10 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/17 19:19:31 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,33 @@ t_list1	*lstnew(int num)
 	return (lst);
 }
 
-void	add_back(t_list1 **lst, t_list1 *new)
+int	add_back(t_list1 **stack_a, t_list1 *num)
 {
 	t_list1	*begin;
 
-	begin = *lst;
+	if (num == NULL)
+		return (1);
+	begin = *stack_a;
 	if (begin)
 	{
 		if (begin->prev)
 		{
-			begin->prev->next = new;
-			new->prev = begin->prev;
-			new->next = begin;
-			begin->prev = new;
+			begin->prev->next = num;
+			num->prev = begin->prev;
+			num->next = begin;
+			begin->prev = num;
 		}
 		else
 		{
-			begin->prev = new;
-			begin->next = new;
-			new->prev = begin;
-			new->next = begin;
+			begin->prev = num;
+			begin->next = num;
+			num->prev = begin;
+			num->next = begin;
 		}
-		
 	}
 	else
-		*lst = new;
+		*stack_a = num;
+	return (0);
 }
 
 void print_stacks(t_all *all)
@@ -58,6 +60,7 @@ void print_stacks(t_all *all)
 	
 	// Печать стека а
 	i = -1;
+	write(1, "\n\033[1;32m----- *** -----\033[0m\n\n", 30);
 	write(1, "\033[1;31m--- stack a ---\033[0m\n", 28);
 	while (all->size_a > ++i)
 	{
@@ -85,8 +88,25 @@ void print_stacks(t_all *all)
 	write(1, "---------------\n", 16);
 
 	
-	write(1, "\n\033[1;32m----- *** -----\033[0m\n", 29);
 	write(1, "\033[1;32m----- *** -----\033[0m\n\n", 29);
+}
+
+void	clear(t_all *all)
+{
+	t_list1	*temp;
+
+	if (!all->stack_a)
+		return ;
+	all->stack_a->prev->next = NULL;
+	while (all->stack_a)
+	{
+		temp = all->stack_a->next;
+		free(all->stack_a);
+		all->stack_a = NULL;
+		all->stack_a = temp;
+	}
+	free(all);
+	exit(1);
 }
 
 int main(int argc, char const *argv[])
@@ -96,54 +116,33 @@ int main(int argc, char const *argv[])
 	int		i;
 
 	if (argc < 2)
-		exit(1);
-	// проверка входящих переменных
+		ft_error("argv");
 	all = malloc(sizeof(t_all));
 	if (!all)
-		exit(1);
+		ft_error("0");
 	all->stack_a = malloc(sizeof(t_list1));
 	if (!all->stack_a)
 	{
 		free(all);
-		exit(1);
+		ft_error("0");
 	}
 	all->size_a = argc - 1;
 	all->size_b = 0;
 	all->stack_a = NULL;
 	all->stack_b = NULL;
 	all->command = NULL;
+	validation(argc, argv); // check
 	i = 0;
 	while (argv[++i])
 	{
 		num = ft_atoi(argv[i]);
-		add_back(&all->stack_a, lstnew(num)); // сделать проверку создан ли лист
+		if (add_back(&all->stack_a, lstnew(num)))
+			clear(all);
 	}
 	init_sorting(all);
-
-	
-	// pb(all);
-	print_stacks(all);
-	// pb(all);
-	// print_stacks(all);
-	// pb(all);
-	// print_stacks(all);
-	// ra(all);
-	// print_stacks(all);
-	// rb(all);
-	// print_stacks(all);
-	// rra(all);
-	// print_stacks(all);
-	// rrb(all);
-	// print_stacks(all);
-	// sa(all);
-	// print_stacks(all);
-	// pa(all);
-	// print_stacks(all);
-	// pa(all);
-	// print_stacks(all);
-	// pa(all);
-	// print_stacks(all);
 	
 	ft_putendl_fd(all->command, 1);
+	print_stacks(all);
+	clear(all);
 	return 0;
 }
