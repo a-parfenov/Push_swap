@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:50:30 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/17 19:19:31 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/17 20:56:37 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int main(int argc, char const *argv[])
 
 	if (argc < 2)
 		ft_error("argv");
+	validation(argc, argv); // check
 	all = malloc(sizeof(t_all));
 	if (!all)
 		ft_error("0");
@@ -131,7 +132,6 @@ int main(int argc, char const *argv[])
 	all->stack_a = NULL;
 	all->stack_b = NULL;
 	all->command = NULL;
-	validation(argc, argv); // check
 	i = 0;
 	while (argv[++i])
 	{

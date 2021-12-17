@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 12:31:39 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/17 19:19:15 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/17 21:47:45 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,40 +30,34 @@ void	isdigit_check(const char *str)
 	{
 		if (!((str[i] <= '9' && str[i] >= '0') || str[i] == ' '
 			|| str[i] == '\t' || str[i] == '-' || str[i] == '+'))
-			{
-				// ft_error("Error_1");
-				write(1, "ERROR\n", 6);
-				exit(1);
-			}
+				ft_error("1");
 		i++;
 	}
 }
 
-// void	find_val(int argc, char const *argv[], t_all *all)
+// int	ft_isdigit1(int c)
 // {
-// 	int		arr[argc];
-// 	int		num;
+// 	return (c >= 48 && c <= 57);
+// }
+
+// void	find_val(int *arr)
+// {
 // 	int		i;
 // 	int		j;
 
 // 	i = 0;
 // 	j = 0;
-// 	while (argv[++i] && i < argc)
+// 	while (arr[++i])
 // 	{
-// 		num = ft_atoi(argv[i]);
-// 		arr[j++] = num;
+// 		while (arr[i][j++])
+// 		{
+// 			if (arr[i][j])
+// 		}
+// 		if (ft_isdigit1(arr[i]))
+// 			ft_error("3");
+// 		arr[i] = num;
 // 	}
-// 	arr[j++] = '\0';
-// 	bubbleSort(arr, argc - 1);
-// 	// for (int i = 0; i < argc - 1; i++)
-// 	// 	printf("%d\n", arr[i]);
-// 	all->min = arr[0];
-// 	all->max = arr[argc - 2];
-// 	all->med = arr[(argc - 1) / 2];
-// 	// write(1, "-----\n", 6);
-// 	// printf("|%d\n", all->min);
-// 	// printf("|%d\n", all->max);
-// 	// printf("|%d\n", all->med);
+
 // }
 
 void	validation(int argc, char const *argv[])
@@ -72,16 +66,23 @@ void	validation(int argc, char const *argv[])
 	int		num;
 	int		i;
 	int		j;
+	int		k;
 
 	i = 0;
 	j = 0;
 	while (argv[++i] && i < argc)
 	{
-		// isdigit_check(argv[i]);
+		isdigit_check(argv[i]);
 		num = ft_atoi(argv[i]);
+		k = -1;
+		while (arr[++k])
+		{
+			if (arr[k] == num)
+				ft_error("2");
+		}
 		arr[j++] = num;
 	}
 	arr[j++] = '\0';
-	// find_val(argc, argv, all);
+	// find_val(arr);
 	// printf("{%d}\n", *arr);
 }
