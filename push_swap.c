@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anton <anton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:50:30 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/17 20:56:37 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/25 18:21:21 by anton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list1	*lstnew(int num)
+t_list1	*lstnew(int num, int j)
 {
 	t_list1	*lst;
 
@@ -22,6 +22,7 @@ t_list1	*lstnew(int num)
 	lst->prev = NULL;
 	lst->next = NULL;
 	lst->num = num;
+	lst->order = j;
 	return (lst);
 }
 
@@ -65,6 +66,8 @@ void print_stacks(t_all *all)
 	while (all->size_a > ++i)
 	{
 		ft_putnbr(all->stack_a->num);
+		write(1, " == ", 4);
+		ft_putnbr(all->stack_a->order);
 		write(1, "\n", 1);
 		all->stack_a = all->stack_a->next;
 	}
@@ -113,11 +116,14 @@ int main(int argc, char const *argv[])
 {
 	t_all	*all;
 	int		num;
+	int		arr[argc];
 	int		i;
+	int		j;
 
 	if (argc < 2)
 		ft_error("argv");
-	validation(argc, argv); // check
+	ft_memset(arr, 0, sizeof(arr));
+	validation(argc, argv, arr); // check
 	all = malloc(sizeof(t_all));
 	if (!all)
 		ft_error("0");
@@ -127,6 +133,9 @@ int main(int argc, char const *argv[])
 		free(all);
 		ft_error("0");
 	}
+	all->max = arr[argc - 1];
+	all->min = arr[1];
+	all->med = arr[argc / 2];
 	all->size_a = argc - 1;
 	all->size_b = 0;
 	all->stack_a = NULL;
@@ -136,13 +145,17 @@ int main(int argc, char const *argv[])
 	while (argv[++i])
 	{
 		num = ft_atoi(argv[i]);
-		if (add_back(&all->stack_a, lstnew(num)))
+		j = 0;
+		while (num != arr[j])
+			++j;
+		if (add_back(&all->stack_a, lstnew(num, j)))
 			clear(all);
 	}
 	init_sorting(all);
+	// pb(all);
 	
 	ft_putendl_fd(all->command, 1);
-	print_stacks(all);
+	// print_stacks(all);
 	clear(all);
 	return 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anton <anton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 12:31:39 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/17 21:47:45 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/25 17:47:54 by anton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ void	isdigit_check(const char *str)
 
 // }
 
-void	validation(int argc, char const *argv[])
+void	validation(int argc, char const *argv[], int *arr)
 {
-	int		arr[argc];
 	int		num;
 	int		i;
 	int		j;
@@ -70,7 +69,7 @@ void	validation(int argc, char const *argv[])
 
 	i = 0;
 	j = 0;
-	while (argv[++i] && i < argc)
+	while (argv[++i])
 	{
 		isdigit_check(argv[i]);
 		num = ft_atoi(argv[i]);
@@ -83,6 +82,5 @@ void	validation(int argc, char const *argv[])
 		arr[j++] = num;
 	}
 	arr[j++] = '\0';
-	// find_val(arr);
-	// printf("{%d}\n", *arr);
+	bubbleSort(arr, argc);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anton <anton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:05 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/17 19:19:26 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/25 18:21:30 by anton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 typedef struct s_list1
 {
 	int				num;
+	int				flag;
+	int				order;
 	struct s_list1	*next;
 	struct s_list1	*prev;
 }					t_list1;
@@ -32,6 +34,10 @@ typedef struct s_all
 	int				min;
 	int				max;
 	int				med;
+	
+	int				flag;
+	int				next;
+	
 	int				size_a;
 	int				size_b;
 	char			*command;
@@ -60,9 +66,9 @@ void	bubbleSort(int *arr_num, int size);
 
 void	sorting(t_all *all);
 
-void print_stacks(t_all *all);
+void	print_stacks(t_all *all);
 
 void	ft_error(char *error);
-void	validation(int argc, char const *argv[]);
+void	validation(int argc, char const *argv[], int *arr);
 
 #endif
