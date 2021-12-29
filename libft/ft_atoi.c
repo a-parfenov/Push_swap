@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:01:50 by aleslie           #+#    #+#             */
-/*   Updated: 2021/10/14 23:02:21 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/29 04:10:06 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,10 @@ static int	ft_isspace(char str)
 		|| str == '\r' || str == ' ');
 }
 
-static size_t	ft_main(size_t count, long int temp, long int min)
+long long int	ft_atoi(const char *str)
 {
-	if (count >= 11)
-	{
-		if (temp == -1)
-			return (0);
-		else
-			return (-1);
-	}
-	return (temp * min);
-}
-
-int	ft_atoi(const char *str)
-{
-	long int	min;
-	long int	temp;
+	 long long int	min;
+	int temp;
 	size_t		i;
 	size_t		count;
 
@@ -55,5 +43,5 @@ int	ft_atoi(const char *str)
 		min = (min * 10) + (str[i++] - '0');
 		count++;
 	}
-	return (ft_main(count, temp, min));
+	return (temp * min);
 }

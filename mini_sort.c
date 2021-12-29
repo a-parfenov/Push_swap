@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:56:47 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/17 19:33:57 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/29 09:52:06 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,82 +34,125 @@ void	bubbleSort(int *arr_num, int size)
 	}
 }
 
-void sorted_arr(t_all *all, int *arr)
-{
-	arr[0] = all->stack_a->num;
-	arr[1] = all->stack_a->next->num;
-	arr[2] = all->stack_a->next->next->num;
-	arr[3] = '\0';
-	bubbleSort(arr, all->size_a);
-}
+// void	sorted_arr(int *arr, t_list1 *stack, int size)
+// {
+// 	arr[0] = stack->num;
+// 	arr[1] = stack->next->num;
+// 	arr[2] = stack->next->next->num;
+// 	arr[3] = '\0';
+// 	bubbleSort(arr, size);
+// }
 
-void	sorting_3_num(t_all *all)
-{
-	int		arr[4];
-	int		min;
-	int		max;
-	int		med;
+// int	check_sort_stack(t_list1 *stack)
+// {
+// 	t_list1	*tmp;
 
-	sorted_arr(all, arr);
-	min = arr[0];
-	max = arr[all->size_a - 1];
-	med = arr[(all->size_a) / 2];
-	if (all->stack_a->num == max)
+// 	if (!stack)
+// 		return (0);
+// 	tmp = stack;
+// 	while (tmp->next)
+// 	{
+// 		if (tmp->order > tmp->next->order)
+// 			return (0);
+// 		tmp = tmp->next;
+// 	}
+// 	return (1);
+// }
+
+void	sorting_3_num(t_all *all, t_list1 *stack, int size)
+{
+	// int		arr[4];
+	// int		min;
+	// int		max;
+	// int		med;
+	// int	last;
+
+	get_mid(all, stack, size);
+	// while (!check_sort_stack(all->stack_a))
+	// {
+	// 	last = all->stack_a->prev->order;
+	// 	if (all->stack_a->order > all->stack_a->next->order
+	// 		&& all->stack_a->order > last)
+	// 		ra(all);
+	// 	else if (all->stack_a->order > all->stack_a->next->order)
+	// 		sa(all);
+	// 	else if (last < all->stack_a->order)
+	// 		rra(all);
+	// 	else if (last < all->stack_a->next->order)
+	// 		rra(all);
+	// }
+
+	
+
+	// (void)size;
+	// sorted_arr(arr, stack, size);
+	if (stack->order == all->max)
 		ra(all);
-	if (all->stack_a->num == med)
+	if (stack->order == all->med)
 	{
-		if (all->stack_a->next->num == max)
+		if (stack->next->order == all->max)
 			rra(all);
 		else
 			sa(all);
 		return ;
 	}
-	if (all->stack_a->next->num == max)
+	if (stack->next->order == all->max)
 	{
 		rra(all);
 		sa(all);
 	}
 }
 
-void	mini_sorting(t_all *all, int i, int j)
+int	find_path(int min, t_list1 *stack)
 {
+	int		i;
+	t_list1	*tmp;
+
+	i = 0;
+	tmp = stack;
+	while (tmp)
+	{
+		if (tmp->order == min)
+			return (i);
+		tmp = tmp->next;
+		i++;
+	}
+	return (0);
+}
+
+void	mini_sorting(t_all *all)
+{
+	print_stacks(all);
 	while (all->size_a > 3)
-		pb(all);
-	sorting_3_num(all);
-	if (all->size_b == 2)
 	{
-		if (all->stack_b->num > all->stack_b->next->num)
-			sb(all);
-	}
-	while (all->size_b)
-	{
-		if (all->stack_b->num < all->stack_a->num)
-			pa(all);
-		else if (all->stack_b->num > all->stack_a->num)
+		get_min(all, all->stack_a, all->size_a);
+		while (all->stack_a->order != all->min)
 		{
-			ra(all);
-			j++;
+			if (find_path(all->min, all->stack_a) <= 3)
+				ra(all);
+			else
+				rra(all);
 		}
-		if (++i == all->size_a)
-			pa(all);
+		pb(all);
+		print_stacks(all);
 	}
-	while (j--)
-		rra(all);
+	sorting_3_num(all, all->stack_a, all->size_a);
+	print_stacks(all);
+	while (all->size_b)
+		pa(all);
 }
 
 void	init_sorting(t_all *all)
 {
-	if (all->size_a == 1)
-		return ;
-	else if (all->size_a == 2)
+	if (all->size_a == 2)
 	{
 		if (all->stack_a->num > all->stack_a->next->num)
 			sa(all);
 	}
 	else if (all->size_a == 3)
-		sorting_3_num(all);
+		sorting_3_num(all, all->stack_a, all->size_a);
 	else if (all->size_a <= 5)
-		mini_sorting(all, 0, 0);
+		mini_sorting(all);
 	else if (all->size_a > 5)
-		sorting(all);
+		fullSorting(all);
 }

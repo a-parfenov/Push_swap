@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anton <anton@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:50:30 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/25 18:21:21 by anton            ###   ########.fr       */
+/*   Updated: 2021/12/29 09:42:09 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_list1	*lstnew(int num, int j)
 	lst->next = NULL;
 	lst->num = num;
 	lst->order = j;
+	lst->flag = 0;
 	return (lst);
 }
 
@@ -55,45 +56,6 @@ int	add_back(t_list1 **stack_a, t_list1 *num)
 	return (0);
 }
 
-void print_stacks(t_all *all)
-{
-	int		i;
-	
-	// Печать стека а
-	i = -1;
-	write(1, "\n\033[1;32m----- *** -----\033[0m\n\n", 30);
-	write(1, "\033[1;31m--- stack a ---\033[0m\n", 28);
-	while (all->size_a > ++i)
-	{
-		ft_putnbr(all->stack_a->num);
-		write(1, " == ", 4);
-		ft_putnbr(all->stack_a->order);
-		write(1, "\n", 1);
-		all->stack_a = all->stack_a->next;
-	}
-	write(1, "---------------\n", 16);
-	write(1, "\n", 1);
-	
-	// Печать стека b
-	i = -1;
-	write(1, "\033[1;31m--- stack b ---\033[0m\n", 28);
-	if (all->stack_b)
-	{
-		while (++i != all->size_b)
-		{
-			ft_putnbr(all->stack_b->num);
-			write(1, "\n", 1);
-			all->stack_b = all->stack_b->next;
-		}
-	}
-	else
-		write(1, "<  Стек пуст  >\n", 25);
-	write(1, "---------------\n", 16);
-
-	
-	write(1, "\033[1;32m----- *** -----\033[0m\n\n", 29);
-}
-
 void	clear(t_all *all)
 {
 	t_list1	*temp;
@@ -112,18 +74,71 @@ void	clear(t_all *all)
 	exit(1);
 }
 
-int main(int argc, char const *argv[])
+void	init(t_all *all, int **arr, int **arr2, int size_arr)
+{
+	int	i;
+	int	j;
+
+	all->size_a = size_arr;
+	all->size_b = 0;
+	all->stack_a = NULL;
+	all->stack_b = NULL;
+	all->command = NULL;
+	all->index = 1;
+	all->flag = 0;
+	i = -1;
+	while (++i < all->size_a)
+	{
+		j = 0;
+		while ((*arr)[i] != (*arr2)[j])
+			++j;
+		if (add_back(&all->stack_a, lstnew((*arr)[i], j + 1)))
+			clear(all);
+	}
+	free(*arr);
+	free(*arr2);
+}
+
+int	check_arr(int **arr, int **arr2, int size_arr)
+{
+	int	i;
+	
+	
+	if (size_arr == 1)
+	{
+		free(*arr);
+		free(*arr2);
+		return (0);
+	}
+	i = -1;
+	while (++i < size_arr)
+	{
+		// printf("*%d %d\n", (*arr)[i], (*arr2)[i]);
+		if ((*arr)[i] != (*arr2)[i])
+			return (0);
+	}
+	return (1);
+}
+
+int	main(int argc, char const *argv[])
 {
 	t_all	*all;
-	int		num;
-	int		arr[argc];
-	int		i;
-	int		j;
+	int		*arr;
+	int		*arr2;
+	int		size_arr;
 
 	if (argc < 2)
 		ft_error("argv");
-	ft_memset(arr, 0, sizeof(arr));
-	validation(argc, argv, arr); // check
+	arr = NULL;
+	arr2 = NULL;
+	size_arr = num_elem(argv, &arr, &arr2);
+	validation(argv, &arr, &arr2, size_arr);
+	if (check_arr(&arr, &arr2, size_arr))
+	{
+		free(arr);
+		free(arr2);
+		return (0);
+	}
 	all = malloc(sizeof(t_all));
 	if (!all)
 		ft_error("0");
@@ -133,29 +148,10 @@ int main(int argc, char const *argv[])
 		free(all);
 		ft_error("0");
 	}
-	all->max = arr[argc - 1];
-	all->min = arr[1];
-	all->med = arr[argc / 2];
-	all->size_a = argc - 1;
-	all->size_b = 0;
-	all->stack_a = NULL;
-	all->stack_b = NULL;
-	all->command = NULL;
-	i = 0;
-	while (argv[++i])
-	{
-		num = ft_atoi(argv[i]);
-		j = 0;
-		while (num != arr[j])
-			++j;
-		if (add_back(&all->stack_a, lstnew(num, j)))
-			clear(all);
-	}
+	init(all, &arr, &arr2, size_arr);
 	init_sorting(all);
-	// pb(all);
-	
 	ft_putendl_fd(all->command, 1);
-	// print_stacks(all);
+	print_stacks(all);
 	clear(all);
-	return 0;
+	return (0);
 }

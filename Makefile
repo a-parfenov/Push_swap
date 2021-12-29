@@ -1,10 +1,15 @@
 NAME		=	push_swap
 
-SRCS_FILES	= 	push_swap.c		mini_sort.c\
-				swap.c			sorting.c\
-				push.c			validation.c\
-				rotate.c\
-				reverse_rotate.c
+SRCS_FILES	= 	push_swap.c\
+				mini_sort.c\
+				sorting.c\
+				validation.c\
+				print_stacks.c\
+				error_handling.c\
+				./commands/swap.c\
+				./commands/push.c\
+				./commands/rotate.c\
+				./commands/reverse_rotate.c
 
 SRCS		= 	$(SRCS_FILES)
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
