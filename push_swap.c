@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:50:30 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/29 09:42:09 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/31 15:31:40 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	init(t_all *all, int **arr, int **arr2, int size_arr)
 	int	j;
 
 	all->size_a = size_arr;
+	all->checkSize = size_arr;
 	all->size_b = 0;
 	all->stack_a = NULL;
 	all->stack_b = NULL;
@@ -103,20 +104,21 @@ int	check_arr(int **arr, int **arr2, int size_arr)
 {
 	int	i;
 	
-	
 	if (size_arr == 1)
 	{
 		free(*arr);
 		free(*arr2);
-		return (0);
+		return (1);
 	}
 	i = -1;
-	while (++i < size_arr)
+	while (++i < size_arr - 1)
 	{
-		// printf("*%d %d\n", (*arr)[i], (*arr2)[i]);
-		if ((*arr)[i] != (*arr2)[i])
+		// printf("*%d %d\n", (*arr)[i], (*arr)[i + 1]);
+		if ((*arr)[i] > (*arr)[i + 1])
 			return (0);
 	}
+	free(*arr);
+	free(*arr2);
 	return (1);
 }
 
@@ -128,17 +130,13 @@ int	main(int argc, char const *argv[])
 	int		size_arr;
 
 	if (argc < 2)
-		ft_error("argv");
+		return (0);
 	arr = NULL;
 	arr2 = NULL;
 	size_arr = num_elem(argv, &arr, &arr2);
 	validation(argv, &arr, &arr2, size_arr);
 	if (check_arr(&arr, &arr2, size_arr))
-	{
-		free(arr);
-		free(arr2);
 		return (0);
-	}
 	all = malloc(sizeof(t_all));
 	if (!all)
 		ft_error("0");
@@ -151,7 +149,7 @@ int	main(int argc, char const *argv[])
 	init(all, &arr, &arr2, size_arr);
 	init_sorting(all);
 	ft_putendl_fd(all->command, 1);
-	print_stacks(all);
+	// print_stacks(all);
 	clear(all);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:05 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/29 04:46:09 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/31 13:30:09 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_all
 	
 	int				size_a;
 	int				size_b;
+	int				checkSize;
 	char			*command;
 }					t_all;
 
@@ -78,5 +79,8 @@ void	check_arr2(int **arr, int **arr2);
 void	validation(char const *argv[], int **arr, int **arr2, int size_arr);
 void	get_min(t_all *all, t_list1 *stack, int size);
 int		num_elem(char const *argv[], int **arr, int **arr2);
+
+int		extraSorting(t_all *all);
+int		extraSorting2(t_all *all);
 
 #endif

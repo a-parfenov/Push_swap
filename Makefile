@@ -6,6 +6,7 @@ SRCS_FILES	= 	push_swap.c\
 				validation.c\
 				print_stacks.c\
 				error_handling.c\
+				extraSorting.c\
 				./commands/swap.c\
 				./commands/push.c\
 				./commands/rotate.c\

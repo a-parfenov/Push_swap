@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:07:39 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/29 01:04:21 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/31 15:29:51 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,56 +86,22 @@ int	maxFlag(t_list1 *stack, int size)
 // }
 
 
-int check_edg_vol(t_all *all)
+void	push_a(t_all *all)
 {
-	if (all->size_b > 3)
-	{
-		if (all->stack_a->order == all->index
-			&& all->stack_b->next->order == all->index + 1)
-		{
-			all->stack_a->flag = -1;
-			rr(all);
-			all->index++;
-			pa(all);
-			all->stack_a->flag = -1;
-			ra(all);
-			all->index++;
-			return (1);
-		}
-		// else if (all->stack_b->order == all->index
-	}
-	if (all->stack_a->next->order == all->index)
-	{
-		sa(all);
-		all->stack_a->flag = -1;
-		ra(all);
-		all->index++;
-		return (1);
-	}
-	else if (all->stack_a->order == all->index)
-	{
-		all->stack_a->flag = -1;
-		ra(all);
-		all->index++;
-		return (1);
-	}
-	return (0);
-}
-
-void	pa_(t_all *all)
-{
-	int	i;
-
 	while (all->stack_b)
 	{
-		// if (all->size_b > 20)
+		if (extraSorting(all))
+			continue ;
 		all->flag++;
 		get_mid(all, all->stack_b, all->size_b);
-		i = all->size_b;
-		while (i--)
+		while (all->size_b > (all->med - all->min))
 		{
 			if (all->stack_b->order >= all->med)
 			{
+				// if (extraSorting(all))
+				// 	continue ;
+				// printf("+++++++\n");
+				// print_stacks(all);
 				pa(all);
 				all->stack_a->flag = all->flag;
 				if (all->stack_a->order == all->index)
@@ -151,30 +117,49 @@ void	pa_(t_all *all)
 	}
 }
 
-void	fullSorting(t_all *all)  // Основная сортировка
+void	startSort(t_all *all, int i)
 {
-	int	max_flag;
-	int	i;
-
-	get_mid(all, all->stack_a, all->size_a);
-	i = all->size_a;
-	while (i--)
+	while (all->size_b <= all->med && i--)
 	{
 		if (all->stack_a->order <= all->med)
+		{
 			pb(all);
+			if (all->stack_b->order == all->index && all->size_a + all->size_b > 20)
+			{
+				all->stack_b->flag = -2;
+				if (all->size_b > 1)
+					rb(all);
+				all->index++;
+			}
+		}
 		else
 			ra(all);
 	}
-	while (all->index <= all->size_a + all->size_b)
+	while (all->stack_b->prev->flag == -2)
+		rrr(all);
+	while (all->stack_b->flag == -2)
 	{
-		pa_(all);
-		// max_flag = maxFlag(all->stack_a, all->size_a);
-		// printf("%d %d\n", all->stack_a->flag, max_flag);
-		max_flag = all->stack_a->flag;
-		while (all->stack_a->flag == max_flag && max_flag >= 0)
+		pa(all);
+		all->stack_a->flag = -1;
+		ra(all);
+	}
+}
+
+void	fullSorting(t_all *all)
+{
+	int	max_flag;
+
+	get_mid(all, all->stack_a, all->size_a);
+	startSort(all, all->size_a);
+	while (all->index <= all->checkSize)
+	{
+		// write(1, "***\n", 4);
+		push_a(all);
+		max_flag = maxFlag(all->stack_a, all->size_a);
+		while (all->stack_a->flag == max_flag)
 		{
 			// write(1, "123\n", 4);
-			// if (check_edg_vol(all))
+			// if (extraSorting(all))
 			// 	continue ;
 			pb(all);
 		}

@@ -6,13 +6,13 @@
 /*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 17:16:52 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/15 12:40:54 by aleslie          ###   ########.fr       */
+/*   Updated: 2021/12/30 19:53:08 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_all *all)
+static void	push_b(t_all *all)
 {
 	if (all->stack_b)
 	{
@@ -30,7 +30,7 @@ void	push_b(t_all *all)
 	}
 }
 
-void	push_a(t_all *all)
+static void	push_a(t_all *all)
 {
 	if (all->stack_a)
 	{
