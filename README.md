@@ -18,8 +18,9 @@ School algorithm project **push_swap**: the aim is to sort data using only two s
 
 Installation
 ------------
->git clone https://github.com/a-parfenov/Push_swap.git && cd push_swap && make
-
+```
+git clone https://github.com/a-parfenov/Push_swap.git && cd push_swap && make
+```
 Run
 ---
 ``` bash
@@ -27,3 +28,4 @@ Run
 ```
 ``` 
 ARG="5 3 6 0 2 1 4"; ./push_swap $ARG | ./checker $ARG
+```
