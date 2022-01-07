@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:12:22 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/29 04:09:43 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/07 21:07:14 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strtrim(char const *s1, char const *set);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
-	
+
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 t_list		*ft_lstlast(t_list *lst);

@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:06:14 by aleslie           #+#    #+#             */
-/*   Updated: 2021/11/11 18:49:12 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/07 21:07:51 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ void	*ft_calloc(size_t count, size_t size)
 // 	ft_memset(tmp, 0, tempos);
 // 	return (tmp);
 // }
-

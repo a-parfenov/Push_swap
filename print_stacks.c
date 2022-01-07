@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_stacks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 00:50:19 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/29 01:01:23 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/05 14:32:52 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	pr_st_b(t_all *all)
 		while (++i != all->size_b)
 		{
 			ft_putnbr(all->stack_b->num);
+			write(1, " == ", 4);
+			ft_putnbr(all->stack_b->order);
 			write(1, "\n", 1);
 			all->stack_b = all->stack_b->next;
 		}

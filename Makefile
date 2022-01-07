@@ -1,19 +1,36 @@
 NAME		=	push_swap
+NAME_BONUS	=	checker
 
-SRCS_FILES	= 	push_swap.c\
+SRCS		= 	push_swap.c\
 				mini_sort.c\
 				sorting.c\
 				validation.c\
 				print_stacks.c\
 				error_handling.c\
 				extraSorting.c\
+				get_stack.c\
+				bubbleSorting.c\
+				init.c\
 				./commands/swap.c\
 				./commands/push.c\
 				./commands/rotate.c\
 				./commands/reverse_rotate.c
 
-SRCS		= 	$(SRCS_FILES)
+SRCS_BONUS	=	checker.c\
+				validation.c\
+				print_stacks.c\
+				error_handling.c\
+				bubbleSorting.c\
+				init.c\
+				./commands/swap.c\
+				./commands/push.c\
+				./commands/rotate.c\
+				./commands/reverse_rotate.c\
+				./gnl/get_next_line.c\
+				./gnl/get_next_line_utils.c
+
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
+OBJS_B		=	$(patsubst %.c,%.o,$(SRCS_BONUS))
 
 INCLUDE		=	-I.
 
@@ -34,27 +51,31 @@ END			=	"\033[0m"
 
 .PHONY:		all libft clean fclean re
 
-all:		libft $(NAME)
+all:		libft $(NAME) $(NAME_BONUS)
 
 libft:
-	@$(MAKE) -C $(dir $(LIB))
+			@$(MAKE) -C $(dir $(LIB))
 
 %.o:		%.c
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME):	$(OBJS) $(LIB)
 			@$(CC) $(INCLUDE) $(LIB) -o $(NAME) $(OBJS)
-			@echo ${GREEN} "\n< Compiled push_swap >\n" ${END}
+			@echo ${GREEN} "\n< Push_swap binary -> done >\n" ${END}
+
+$(NAME_BONUS):	libft $(OBJS_B) $(LIB)
+			@$(CC) $(INCLUDE) $(LIB) -o $(NAME_BONUS) $(OBJS_B)
+			@echo ${PURPLE} "\n< Checker binary -> done >\n" ${END}
 
 clean:
-			@$(RM) $(OBJS)
+			@$(RM) $(OBJS) $(OBJS_B)
 			@$(MAKE) -C $(dir $(LIB)) clean
-			@echo ${YELLOW} "\n< Cleaning succeed >\n" ${END}
+			@echo ${YELLOW} "\n< .o files -> removed >\n" ${END}
 
 fclean:		clean
 			@$(MAKE) -C $(dir $(LIB)) fclean
-			@$(RM) $(NAME)
-			@echo ${YELLOW} "\n< All created files were deleted >\n" ${END}
+			@$(RM) $(NAME) $(NAME_BONUS)
+			@echo ${YELLOW} "\n< Binaries -> removed >\n" ${END}
 
 re:			fclean all
 			@echo ${PURPLE} "\n< Remake done >\n" ${END}

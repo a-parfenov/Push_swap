@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 17:16:52 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/30 19:53:08 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/07 21:41:03 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ static void	push_a(t_all *all)
 	}
 }
 
-void	pb(t_all *all)
+void	pb(t_all *all, int q)
 {
 	t_list1		*next;
 	t_list1		*prev;
 
 	if (all->stack_a == NULL)
 		return ;
+	// printf("*** pb\n");
 	next = all->stack_a->next;
 	prev = all->stack_a->prev;
 	push_b(all);
@@ -66,20 +67,21 @@ void	pb(t_all *all)
 		prev->next = next;
 		all->stack_a = next;
 	}
-	if (all->command)
+	if (all->command && q)
 		ft_putendl_fd(all->command, 1);
 	all->command = "pb";
 	all->size_a--;
 	all->size_b++;
 }
 
-void	pa(t_all *all)
+void	pa(t_all *all, int q)
 {
 	t_list1		*next;
 	t_list1		*prev;
 
 	if (all->stack_b == NULL)
 		return ;
+	// printf("*** pa\n");
 	next = all->stack_b->next;
 	prev = all->stack_b->prev;
 	push_a(all);
@@ -91,7 +93,7 @@ void	pa(t_all *all)
 		prev->next = next;
 		all->stack_b = next;
 	}
-	if (all->command)
+	if (all->command && q)
 		ft_putendl_fd(all->command, 1);
 	all->command = "pa";
 	all->size_b--;

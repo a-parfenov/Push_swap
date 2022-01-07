@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleslie <aleslie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:05 by aleslie           #+#    #+#             */
-/*   Updated: 2021/12/31 13:30:09 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/07 21:05:48 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,51 +36,85 @@ typedef struct s_all
 
 	int				min;
 	int				max;
-	int				med;
-	
+	int				mid;
+
 	int				index;
 	int				flag;
-	
+
 	int				size_a;
 	int				size_b;
-	int				checkSize;
+	int				check_size;
 	char			*command;
+
+	int				error;
 }					t_all;
 
-void	sa(t_all *all);
-void	sb(t_all *all);
-void	ss(t_all *all);
+void	sa(t_all *all, int q);
+void	sb(t_all *all, int q);
+void	ss(t_all *all, int q);
 
-void	pb(t_all *all);
-void	pa(t_all *all);
+void	pb(t_all *all, int q);
+void	pa(t_all *all, int q);
 
-void	ra(t_all *all);
-void	rb(t_all *all);
-void	rr(t_all *all);
+void	ra(t_all *all, int q);
+void	rb(t_all *all, int q);
+void	rr(t_all *all, int q);
 
-void	rra(t_all *all);
-void	rrb(t_all *all);
-void	rrr(t_all *all);
+void	rra(t_all *all, int q);
+void	rrb(t_all *all, int q);
+void	rrr(t_all *all, int q);
 
-void	sorting_3_num(t_all *all, t_list1 *stack, int size);
-void	init_sorting(t_all *all);
-void	bubbleSort(int *arr_num, int size);
-void	get_mid(t_all *all, t_list1 *stack, int size);
-int		check_sort_stack(t_list1 *stack);
-
-void	fullSorting(t_all *all);
+t_list1	*lstnew(int num, int serial_num);
+int		add_back(t_list1 **stack_a, t_list1 *num);
+void	init(t_all *all, int **arr, int **arr2, int size_arr);
+void	clear(t_all *all);
 
 void	print_stacks(t_all *all);
-void	clear(t_all *all);
+
+void	full_sorting(t_all *all);
+
+void	bubble_sort(int *arr_num, int size);
+
+/*
+ * error_handling.c
+ */
 
 void	ft_error(char *error);
 void	check_arr2(int **arr, int **arr2);
+void	ft_error_2(char **arr_split, int *arr, int *arr2);
+void	dup_val(int *arr, int *arr2, int num, char **arr_split);
+void	arr_split_clear(char **arr_split);
+
+/*
+ * extraSorting.c
+ */
+
+int		extra_sorting(t_all *all);
+void	push_sort(t_all *all);
+
+/*
+ * get_stack.c
+ */
+
+int		maxi_flag(t_list1 *stack, int size);
+void	get_mid(t_all *all, t_list1 *stack, int size);
+void	get_min(t_all *all, t_list1 *stack, int size);
+
+/*
+ * mini_sort.c
+ */
+
+void	init_sorting(t_all *all);
+void	sorting_3_num(t_all *all, t_list1 *stack, int size);
+
+/*
+ * validation.c
+ */
 
 void	validation(char const *argv[], int **arr, int **arr2, int size_arr);
-void	get_min(t_all *all, t_list1 *stack, int size);
+int		check_arr(int **arr, int **arr2, int size_arr);
 int		num_elem(char const *argv[], int **arr, int **arr2);
 
-int		extraSorting(t_all *all);
-int		extraSorting2(t_all *all);
+int		get_next_line(int fd, char **line);
 
 #endif
