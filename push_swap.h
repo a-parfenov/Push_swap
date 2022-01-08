@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:05 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:05:48 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/08 17:11:41 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_all
 	char			*command;
 
 	int				error;
+	int				count;
 }					t_all;
 
 void	sa(t_all *all, int q);

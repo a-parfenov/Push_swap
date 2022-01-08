@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 14:38:10 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:45:11 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/08 18:03:28 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ static int	check_stack(t_list1 *stack, int size)
 
 static void	find_operations(t_all *all, char *line)
 {
-	if (!ft_strncmp(line, "sa", 2))
+	if (!ft_strcmp(line, "sa\n"))
 		sa(all, 0);
-	else if (!ft_strncmp(line, "sb", 2))
+	else if (!ft_strcmp(line, "sb\n"))
 		sb(all, 0);
-	else if (!ft_strncmp(line, "ss", 2))
+	else if (!ft_strcmp(line, "ss\n"))
 		ss(all, 0);
-	else if (!ft_strncmp(line, "pa", 2))
+	else if (!ft_strcmp(line, "pa\n"))
 		pa(all, 0);
-	else if (!ft_strncmp(line, "pb", 2))
+	else if (!ft_strcmp(line, "pb\n"))
 		pb(all, 0);
-	else if (!ft_strncmp(line, "ra", 2))
+	else if (!ft_strcmp(line, "ra\n"))
 		ra(all, 0);
-	else if (!ft_strncmp(line, "rb", 2))
+	else if (!ft_strcmp(line, "rb\n"))
 		rb(all, 0);
-	else if (!ft_strncmp(line, "rr", 2))
+	else if (!ft_strcmp(line, "rr\n"))
 		rr(all, 0);
-	else if (!ft_strncmp(line, "rra", 2))
+	else if (!ft_strcmp(line, "rra\n"))
 		rra(all, 0);
-	else if (!ft_strncmp(line, "rrb", 2))
+	else if (!ft_strcmp(line, "rrb\n"))
 		rrb(all, 0);
-	else if (!ft_strncmp(line, "rrr", 2))
+	else if (!ft_strcmp(line, "rrr\n"))
 		rrr(all, 0);
 	else
 		all->error = 1;
@@ -60,10 +60,11 @@ static void	get_commands(t_all *all)
 	char	*line;
 
 	all->error = 0;
+	all->count = 0;
 	line = NULL;
 	while (get_next_line(0, &line))
 	{
-		// printf("%s", line);
+		all->count++;
 		find_operations(all, line);
 		free(line);
 		if (all->error == 1)
@@ -77,10 +78,16 @@ static void	into_checker(t_all *all)
 	if (all->error)
 		write(1, "Error\n", 6);
 	else if (check_stack(all->stack_a, all->size_a) && !all->size_b)
+	{
+		print_stacks(all);
+		printf("Steps: %d\n\n", all->count);
 		ft_putendl_fd("\x1b[32mOK\n", 1);
+	}
 	else
+	{
+		print_stacks(all);
 		ft_putendl_fd("\x1b[31mKO\n", 1);
-	// print_stacks(all);
+	}
 }
 
 int	main(int argc, char const *argv[])

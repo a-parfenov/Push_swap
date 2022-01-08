@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 17:16:52 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:41:03 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/08 15:02:33 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	pb(t_all *all, int q)
 
 	if (all->stack_a == NULL)
 		return ;
-	// printf("*** pb\n");
 	next = all->stack_a->next;
 	prev = all->stack_a->prev;
 	push_b(all);
@@ -81,7 +80,6 @@ void	pa(t_all *all, int q)
 
 	if (all->stack_b == NULL)
 		return ;
-	// printf("*** pa\n");
 	next = all->stack_b->next;
 	prev = all->stack_b->prev;
 	push_a(all);

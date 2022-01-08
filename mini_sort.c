@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:56:47 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:05:58 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/08 15:05:48 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ void	mini_sorting(t_all *all)
 	}
 	sorting_3_num(all, all->stack_a, all->size_a);
 	while (all->size_b)
+	{
 		pa(all, 1);
+	}
 }
 
 void	init_sorting(t_all *all)

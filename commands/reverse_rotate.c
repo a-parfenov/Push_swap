@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:09:10 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:41:19 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/08 15:01:49 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ void	rra(t_all *all, int q)
 {
 	if (all->size_a <= 1)
 		return ;
-	// printf("*** rra\n");
 	all->stack_a = all->stack_a->prev;
-	if (all->command && !ft_strncmp(all->command, "rrb", 3))
+	if (all->command && !ft_strcmp(all->command, "rrb\n"))
 		all->command = "rrr";
 	else
 		if (all->command && q)
@@ -30,9 +29,8 @@ void	rrb(t_all *all, int q)
 {
 	if (all->size_b <= 1)
 		return ;
-	// printf("*** rrb\n");
 	all->stack_b = all->stack_b->prev;
-	if (all->command && !ft_strncmp(all->command, "rra", 3))
+	if (all->command && !ft_strcmp(all->command, "rra\n"))
 		all->command = "rrr";
 	else
 		if (all->command && q)
@@ -44,7 +42,6 @@ void	rrr(t_all *all, int q)
 {
 	if (all->size_a <= 1 && all->size_b <= 1)
 		return ;
-	// printf("*** rrr\n");
 	rra(all, q);
 	rrb(all, q);
 }

@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 01:12:58 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/05 14:32:15 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/08 16:24:21 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(char *error)
 {
 	(void)error;
-	write(2, "ERROR: ", 7);
+	write(2, "Error: ", 7);
 	write(2, error, ft_strlen(error));
 	write(2, "\n", 1);
 	exit(1);

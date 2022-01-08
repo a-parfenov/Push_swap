@@ -16,6 +16,12 @@ Push_swap
 School algorithm project **push_swap**: the aim is to sort data using only two stacks and a limited set of instructions.  Norminette codestyle.   
 [**subject.pdf**](https://cdn.intra.42.fr/pdf/pdf/36359/en.subject.pdf)  
 
+------------
+
+Sorting 100 numbers takes an average of 660 steps
+Sorting 500 numbers takes an average of 4930 steps
+Evaluation of the algorithm by subject: 5/5
+
 Installation
 ------------
 ```
@@ -24,8 +30,12 @@ git clone https://github.com/a-parfenov/Push_swap.git && cd push_swap && make
 Run
 ---
 ``` bash
-./push_swap 5 3 6 0 2 1 4
+./push_swap 3 0 2 1 4
 ```
-``` 
+```
 ARG="5 3 6 0 2 1 4"; ./push_swap $ARG | ./checker $ARG
+```
+or
+```
+ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
 ```

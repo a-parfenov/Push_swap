@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:22:33 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:06:39 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/08 17:11:33 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ void	clear(t_all *all)
 		free(all->stack_a);
 		all->stack_a = NULL;
 		all->stack_a = temp;
+	}
+	while (all->size_b--)
+	{
+		temp = all->stack_b->next;
+		free(all->stack_b);
+		all->stack_b = NULL;
+		all->stack_b = temp;
 	}
 	free(all);
 	exit(1);
