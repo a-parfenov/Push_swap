@@ -18,8 +18,8 @@ School algorithm project **push_swap**: the aim is to sort data using only two s
 
 ------------
 
-Sorting 100 numbers takes an average of 660 steps
-Sorting 500 numbers takes an average of 4930 steps
+Sorting 100 numbers takes an average of 660 steps  
+Sorting 500 numbers takes an average of 4930 steps  
 Evaluation of the algorithm by subject: 5/5
 
 Installation
@@ -35,7 +35,6 @@ Run
 ```
 ARG="5 3 6 0 2 1 4"; ./push_swap $ARG | ./checker $ARG
 ```
-or
 ```
 ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
 ```
