@@ -13,7 +13,8 @@
 Push_swap
 =========
 
-School algorithm project **push_swap**: the aim is to sort data using only two stacks and a limited set of instructions.  Norminette codestyle.   
+School algorithm project **push_swap**: the aim is to sort data using only two stacks and a limited set of instructions.  
+Norminette codestyle.   
 [**subject.pdf**](https://cdn.intra.42.fr/pdf/pdf/36359/en.subject.pdf)  
 
 ------------
@@ -38,3 +39,7 @@ ARG="5 3 6 0 2 1 4"; ./push_swap $ARG | ./checker $ARG
 ```
 ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
 ```
+
+Visualization
+-------------
+![pushswap](https://user-images.githubusercontent.com/6814254/39968014-7caf603a-56c6-11e8-8859-6231562d3ae8.gif)
