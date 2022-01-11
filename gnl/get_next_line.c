@@ -6,11 +6,11 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 05:32:20 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/08 13:10:44 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 22:00:16 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./include/get_next_line.h"
 
 int	name(char *s)
 {

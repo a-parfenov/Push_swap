@@ -6,11 +6,11 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 12:31:39 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 20:52:30 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:58:07 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./include/push_swap.h"
 
 int	check_arr(int **arr, int **arr2, int size_arr)
 {
@@ -42,7 +42,7 @@ static void	isdigit_check(const char *str)
 	{
 		if (!((str[i] <= '9' && str[i] >= '0') || str[i] == ' '
 				|| str[i] == '\t' || str[i] == '-' || str[i] == '+'))
-			ft_error("1");
+			ft_error("the arguments must be int");
 		i++;
 	}
 }
@@ -70,7 +70,7 @@ int	num_elem(char const *argv[], int **arr, int **arr2)
 	}
 	*arr = (int *)ft_calloc(l + 1, sizeof(int));
 	if (!(*arr))
-		ft_error("4");
+		ft_error("memory arr");
 	*arr2 = (int *)ft_calloc(l + 1, sizeof(int));
 	check_arr2(arr, arr2);
 	return (l);

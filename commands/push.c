@@ -6,11 +6,11 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 17:16:52 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/08 15:02:33 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:59:11 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./include/push_swap.h"
 
 static void	push_b(t_all *all)
 {
@@ -50,8 +50,8 @@ static void	push_a(t_all *all)
 
 void	pb(t_all *all, int q)
 {
-	t_list1		*next;
-	t_list1		*prev;
+	t_node		*next;
+	t_node		*prev;
 
 	if (all->stack_a == NULL)
 		return ;
@@ -75,8 +75,8 @@ void	pb(t_all *all, int q)
 
 void	pa(t_all *all, int q)
 {
-	t_list1		*next;
-	t_list1		*prev;
+	t_node		*next;
+	t_node		*prev;
 
 	if (all->stack_b == NULL)
 		return ;

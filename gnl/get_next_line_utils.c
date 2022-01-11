@@ -6,11 +6,11 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:08:13 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 23:08:16 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 22:00:19 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./include/get_next_line.h"
 
 size_t	ft_strlen2(char *str)
 {

@@ -1,27 +1,27 @@
 NAME		=	push_swap
 NAME_BONUS	=	checker
 
-SRCS		= 	push_swap.c\
-				mini_sort.c\
-				sorting.c\
-				validation.c\
-				print_stacks.c\
-				error_handling.c\
-				extraSorting.c\
-				get_stack.c\
-				bubbleSorting.c\
-				init.c\
+SRCS		= 	./src/push_swap.c\
+				./src/mini_sort.c\
+				./src/sorting.c\
+				./src/validation.c\
+				./src/print_stacks.c\
+				./src/error_handling.c\
+				./src/extraSorting.c\
+				./src/get_stack.c\
+				./src/bubbleSorting.c\
+				./src/init.c\
 				./commands/swap.c\
 				./commands/push.c\
 				./commands/rotate.c\
 				./commands/reverse_rotate.c
 
-SRCS_BONUS	=	checker.c\
-				validation.c\
-				print_stacks.c\
-				error_handling.c\
-				bubbleSorting.c\
-				init.c\
+SRCS_BONUS	=	./src/checker.c\
+				./src/validation.c\
+				./src/print_stacks.c\
+				./src/error_handling.c\
+				./src/bubbleSorting.c\
+				./src/init.c\
 				./commands/swap.c\
 				./commands/push.c\
 				./commands/rotate.c\

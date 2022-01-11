@@ -6,13 +6,13 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:56:47 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/08 15:05:48 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:58:28 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./include/push_swap.h"
 
-static void	sorted_arr(int *arr, t_list1 *stack, int size)
+static void	sorted_arr(int *arr, t_node *stack, int size)
 {
 	arr[0] = stack->num;
 	arr[1] = stack->next->num;
@@ -21,7 +21,7 @@ static void	sorted_arr(int *arr, t_list1 *stack, int size)
 	bubble_sort(arr, size);
 }
 
-void	sorting_3_num(t_all *all, t_list1 *stack, int size)
+void	sorting_3_num(t_all *all, t_node *stack, int size)
 {
 	int		arr[4];
 	int		min;
@@ -49,10 +49,10 @@ void	sorting_3_num(t_all *all, t_list1 *stack, int size)
 	}
 }
 
-int	find_path(int min, t_list1 *stack)
+int	find_path(int min, t_node *stack)
 {
 	int		i;
-	t_list1	*tmp;
+	t_node	*tmp;
 
 	i = 0;
 	tmp = stack;
@@ -100,4 +100,5 @@ void	init_sorting(t_all *all)
 		mini_sorting(all);
 	else if (all->size_a > 5)
 		full_sorting(all);
+	ft_putendl_fd(all->command, 1);
 }

@@ -6,16 +6,16 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 14:38:10 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/08 18:03:28 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 22:00:06 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "./gnl/get_next_line.h"
+#include "./include/push_swap.h"
+#include "./include//get_next_line.h"
 
-static int	check_stack(t_list1 *stack, int size)
+static int	check_stack(t_node *stack, int size)
 {
-	t_list1	*tmp;
+	t_node	*tmp;
 
 	tmp = stack;
 	while (--size)
@@ -94,25 +94,18 @@ int	main(int argc, char const *argv[])
 {
 	t_all	*all;
 	int		*arr;
-	int		*arr2;
+	int		*arr_sort;
 	int		size_arr;
 
 	if (argc < 2)
 		return (0);
 	arr = NULL;
-	arr2 = NULL;
-	size_arr = num_elem(argv, &arr, &arr2);
-	validation(argv, &arr, &arr2, size_arr);
-	if (check_arr(&arr, &arr2, size_arr))
+	arr_sort = NULL;
+	size_arr = num_elem(argv, &arr, &arr_sort);
+	validation(argv, &arr, &arr_sort, size_arr);
+	if (check_arr(&arr, &arr_sort, size_arr))
 		return (0);
-	all = malloc(sizeof(t_all));
-	if (!all)
-	{
-		free(arr);
-		free(arr2);
-		ft_error("0");
-	}
-	init(all, &arr, &arr2, size_arr);
+	all = init(&arr, &arr_sort, size_arr);
 	into_checker(all);
 	clear(all);
 	return (0);

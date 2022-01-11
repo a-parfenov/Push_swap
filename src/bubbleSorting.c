@@ -6,11 +6,11 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 14:32:03 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:05:34 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:58:48 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./include/push_swap.h"
 
 void	bubble_sort(int *arr_num, int size)
 {

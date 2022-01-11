@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:05 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/08 17:11:41 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:49:38 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@
 # define MAXINT 2147483647
 # define MININT -2147483648
 
-typedef struct s_list1
+typedef struct s_node
 {
 	int				num;
 	int				flag;
 	int				order;
-	struct s_list1	*next;
-	struct s_list1	*prev;
-}					t_list1;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_node;
 
 typedef struct s_all
 {
-	struct s_list1	*stack_a;
-	struct s_list1	*stack_b;
+	struct s_node	*stack_a;
+	struct s_node	*stack_b;
 
 	int				min;
 	int				max;
@@ -65,9 +65,9 @@ void	rra(t_all *all, int q);
 void	rrb(t_all *all, int q);
 void	rrr(t_all *all, int q);
 
-t_list1	*lstnew(int num, int serial_num);
-int		add_back(t_list1 **stack_a, t_list1 *num);
-void	init(t_all *all, int **arr, int **arr2, int size_arr);
+t_node	*lstnew(int num, int serial_num);
+int		add_back(t_node **stack_a, t_node *num);
+t_all	*init(int **arr, int **arr2, int size_arr);
 void	clear(t_all *all);
 
 void	print_stacks(t_all *all);
@@ -75,6 +75,8 @@ void	print_stacks(t_all *all);
 void	full_sorting(t_all *all);
 
 void	bubble_sort(int *arr_num, int size);
+
+int		get_next_line(int fd, char **line);
 
 /*
  * error_handling.c
@@ -97,16 +99,16 @@ void	push_sort(t_all *all);
  * get_stack.c
  */
 
-int		maxi_flag(t_list1 *stack, int size);
-void	get_mid(t_all *all, t_list1 *stack, int size);
-void	get_min(t_all *all, t_list1 *stack, int size);
+int		maxi_flag(t_node *stack, int size);
+void	get_mid(t_all *all, t_node *stack, int size);
+void	get_min(t_all *all, t_node *stack, int size);
 
 /*
  * mini_sort.c
  */
 
 void	init_sorting(t_all *all);
-void	sorting_3_num(t_all *all, t_list1 *stack, int size);
+void	sorting_3_num(t_all *all, t_node *stack, int size);
 
 /*
  * validation.c
@@ -116,6 +118,5 @@ void	validation(char const *argv[], int **arr, int **arr2, int size_arr);
 int		check_arr(int **arr, int **arr2, int size_arr);
 int		num_elem(char const *argv[], int **arr, int **arr2);
 
-int		get_next_line(int fd, char **line);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:07:39 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/07 21:04:00 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:58:16 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./include/push_swap.h"
 
 static void	check_a_b(t_all *all)
 {

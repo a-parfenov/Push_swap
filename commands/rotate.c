@@ -6,11 +6,11 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:54:30 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/08 15:02:13 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:59:17 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./include/push_swap.h"
 
 /*
  * ra: rotate a - shift up all elements of stack a by 1.
