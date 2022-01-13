@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:14:05 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/13 16:23:10 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/13 17:02:38 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	rrb(t_all *all, int q);
 void	rrr(t_all *all, int q);
 
 t_node	*lstnew(int num, int serial_num);
-int		add_back(t_node **stack_a, t_node *num);
 t_all	*init(int **arr, int size_arr);
+int		add_back(t_node **stack_a, t_node *num);
 void	clear(t_all *all);
 
 void	print_stacks(t_all *all);

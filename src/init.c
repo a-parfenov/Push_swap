@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:22:33 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/13 16:14:57 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/13 17:00:35 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_all	*init(int **arr, int size_arr)
 {
 	t_all	*all;
 	int		i;
-	int		j;
+	int		index_num;
 	int		k;
 
 	all = malloc(sizeof(t_all));
@@ -110,13 +110,13 @@ t_all	*init(int **arr, int size_arr)
 	while (++i < all->size_a)
 	{
 		k = -1;
-		j = 0;
+		index_num = 0;
 		while (++k < size_arr)
 		{
 			if ((*arr)[i] > (*arr)[k])
-				++j;
+				++index_num;
 		}
-		if (add_back(&all->stack_a, lstnew((*arr)[i], j + 1)))
+		if (add_back(&all->stack_a, lstnew((*arr)[i], index_num + 1)))
 			clear(all);
 	}
 	free(*arr);
