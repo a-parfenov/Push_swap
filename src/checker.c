@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 14:38:10 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/11 22:00:06 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/13 16:16:31 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,16 @@ int	main(int argc, char const *argv[])
 {
 	t_all	*all;
 	int		*arr;
-	int		*arr_sort;
 	int		size_arr;
 
 	if (argc < 2)
 		return (0);
 	arr = NULL;
-	arr_sort = NULL;
-	size_arr = num_elem(argv, &arr, &arr_sort);
-	validation(argv, &arr, &arr_sort, size_arr);
-	if (check_arr(&arr, &arr_sort, size_arr))
+	size_arr = num_elem(argv, &arr);
+	validation(argv, &arr);
+	if (check_arr(&arr, size_arr))
 		return (0);
-	all = init(&arr, &arr_sort, size_arr);
+	all = init(&arr, size_arr);
 	into_checker(all);
 	clear(all);
 	return (0);

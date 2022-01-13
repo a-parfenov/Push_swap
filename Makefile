@@ -9,25 +9,25 @@ SRCS		= 	./src/push_swap.c\
 				./src/error_handling.c\
 				./src/extraSorting.c\
 				./src/get_stack.c\
-				./src/bubbleSorting.c\
 				./src/init.c\
 				./commands/swap.c\
 				./commands/push.c\
 				./commands/rotate.c\
-				./commands/reverse_rotate.c
+				./commands/reverse_rotate.c\
+				 ./src/bubbleSorting.c
 
 SRCS_BONUS	=	./src/checker.c\
 				./src/validation.c\
 				./src/print_stacks.c\
 				./src/error_handling.c\
-				./src/bubbleSorting.c\
 				./src/init.c\
 				./commands/swap.c\
 				./commands/push.c\
 				./commands/rotate.c\
 				./commands/reverse_rotate.c\
 				./gnl/get_next_line.c\
-				./gnl/get_next_line_utils.c
+				./gnl/get_next_line_utils.c\
+				 ./src/bubbleSorting.c
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
 OBJS_B		=	$(patsubst %.c,%.o,$(SRCS_BONUS))

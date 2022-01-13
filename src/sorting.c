@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:07:39 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/11 21:58:16 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/13 15:44:13 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@ static void	check_a_b(t_all *all)
 	{
 		pa(all, 1);
 		all->stack_a->flag = all->flag;
-		if (all->stack_a->order == all->index)
-		{
-			all->stack_a->flag = -1;
-			ra(all, 1);
-			all->index++;
-		}
 	}
 	else
 	{

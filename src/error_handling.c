@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 01:12:58 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/11 21:58:41 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/13 16:14:45 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,7 @@ void	ft_error(char *error)
 	exit(1);
 }
 
-void	check_arr2(int **arr, int **arr2)
-{
-	if (!(*arr2))
-	{
-		free(*arr);
-		ft_error("memory arr2");
-	}
-}
-
-void	ft_error_2(char **arr_split, int *arr, int *arr2)
+void	ft_error_2(char **arr_split, int *arr)
 {
 	int	k;
 
@@ -39,11 +30,10 @@ void	ft_error_2(char **arr_split, int *arr, int *arr2)
 		free(arr_split[k]);
 	free(arr_split);
 	free(arr);
-	free(arr2);
 	ft_error("value out of range int");
 }
 
-void	dup_val(int *arr, int *arr2, int num, char **arr_split)
+void	dup_val(int *arr, int num, char **arr_split)
 {
 	int	i;
 	int	k;
@@ -56,7 +46,6 @@ void	dup_val(int *arr, int *arr2, int num, char **arr_split)
 			k = -1;
 			arr_split_clear(arr_split);
 			free(arr);
-			free(arr2);
 			ft_error("the number repeats");
 		}
 	}

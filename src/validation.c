@@ -6,20 +6,19 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 12:31:39 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/11 21:58:07 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/13 16:15:16 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/push_swap.h"
 
-int	check_arr(int **arr, int **arr2, int size_arr)
+int	check_arr(int **arr, int size_arr)
 {
 	int	i;
 
 	if (size_arr == 1)
 	{
 		free(*arr);
-		free(*arr2);
 		return (1);
 	}
 	i = -1;
@@ -29,7 +28,6 @@ int	check_arr(int **arr, int **arr2, int size_arr)
 			return (0);
 	}
 	free(*arr);
-	free(*arr2);
 	return (1);
 }
 
@@ -47,7 +45,7 @@ static void	isdigit_check(const char *str)
 	}
 }
 
-int	num_elem(char const *argv[], int **arr, int **arr2)
+int	num_elem(char const *argv[], int **arr)
 {
 	char	**arr_split;
 	int		i;
@@ -71,12 +69,10 @@ int	num_elem(char const *argv[], int **arr, int **arr2)
 	*arr = (int *)ft_calloc(l + 1, sizeof(int));
 	if (!(*arr))
 		ft_error("memory arr");
-	*arr2 = (int *)ft_calloc(l + 1, sizeof(int));
-	check_arr2(arr, arr2);
 	return (l);
 }
 
-void	validation(char const *argv[], int **arr, int **arr2, int size_arr)
+void	validation(char const *argv[], int **arr)
 {
 	char		**arr_split;
 	long long	num;
@@ -94,13 +90,10 @@ void	validation(char const *argv[], int **arr, int **arr2, int size_arr)
 		{
 			num = ft_atoi(arr_split[k]);
 			if (num >= MAXINT || num <= MININT)
-				ft_error_2(arr_split, *arr, *arr2);
-			dup_val(*arr, *arr2, num, arr_split);
+				ft_error_2(arr_split, *arr);
+			dup_val(*arr, num, arr_split);
 			(*arr)[j++] = num;
 		}
 		arr_split_clear(arr_split);
 	}
-	k = -1;
-	while (++k < size_arr)
-		(*arr2)[k] = (*arr)[k];
 }

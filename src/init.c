@@ -6,7 +6,7 @@
 /*   By: aleslie <aleslie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:22:33 by aleslie           #+#    #+#             */
-/*   Updated: 2022/01/11 22:04:09 by aleslie          ###   ########.fr       */
+/*   Updated: 2022/01/13 16:14:57 by aleslie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,9 @@ void	clear(t_all *all)
 		all->stack_b = temp;
 	}
 	free(all);
-	exit(1);
 }
 
-static void	init_struct(t_all *all, int **arr2, int size_arr)
+static void	init_struct(t_all *all, int size_arr)
 {
 	all->size_a = size_arr;
 	all->check_size = size_arr;
@@ -91,33 +90,35 @@ static void	init_struct(t_all *all, int **arr2, int size_arr)
 	all->command = NULL;
 	all->index = 1;
 	all->flag = 0;
-	bubble_sort(*arr2, size_arr);
 }
 
-t_all	*init(int **arr, int **arr2, int size_arr)
+t_all	*init(int **arr, int size_arr)
 {
 	t_all	*all;
 	int		i;
 	int		j;
+	int		k;
 
 	all = malloc(sizeof(t_all));
 	if (!all)
 	{
 		free(arr);
-		free(arr2);
 		ft_error("memory init");
 	}
-	init_struct(all, arr2, size_arr);
+	init_struct(all, size_arr);
 	i = -1;
 	while (++i < all->size_a)
 	{
+		k = -1;
 		j = 0;
-		while ((*arr)[i] != (*arr2)[j])
-			++j;
+		while (++k < size_arr)
+		{
+			if ((*arr)[i] > (*arr)[k])
+				++j;
+		}
 		if (add_back(&all->stack_a, lstnew((*arr)[i], j + 1)))
 			clear(all);
 	}
 	free(*arr);
-	free(*arr2);
 	return (all);
 }
