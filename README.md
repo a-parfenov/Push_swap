@@ -50,12 +50,12 @@ Launch the visualizer, submit 100 numbers:
 python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
 ```
 
-Starting the sorting algorithm:
+Starting the sorting algorithm (displays only the commands used):
 ```
 ./push_swap 3 0 2 1 4
 ```
 
-Launching the sorting algorithm and checker:
+Launching the sorting algorithm and checker (displays the result of the work):
 ```
 ARG="5 3 6 0 2 1 4"; ./push_swap $ARG | ./checker $ARG
 ```
